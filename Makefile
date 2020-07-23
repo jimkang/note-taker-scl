@@ -26,10 +26,7 @@ start-service:
 stop-service:
 	$(PRIVSSHCMD) "service $(PROJECTNAME) stop"
 
-set-permissions:
-	$(PRIVSSHCMD) "chmod +x $(APPDIR)/start-$(PROJECTNAME).js"
-
-update-remote: sync set-permissions restart-remote
+update-remote: sync restart-remote
 
 install-service:
 	$(PRIVSSHCMD) "cp $(APPDIR)/$(PROJECTNAME).service /etc/systemd/system && \
