@@ -13,7 +13,7 @@ run:
 	GITDIR=$(GITDIR) node_modules/.bin/note-taker configs
 
 sync:
-	rsync -a $(HOMEDIR) $(USER)@$(SERVER):/opt/ --exclude node_modules/ \
+	rsync -a $(HOMEDIR)/ $(USER)@$(SERVER):$(APPDIR) --exclude node_modules/ \
 	  --omit-dir-times --no-perms
 	$(SSHCMD) "cd /opt/$(PROJECTNAME) && npm install"
 
