@@ -2,7 +2,7 @@
 Description=note-taker
 After=network.target
 [Service]
-ExecStart=/opt/note-taker/start-note-taker.js /opt/note-taker/configs
+ExecStart=/opt/note-taker/node_modules/.bin/note-taker /opt/note-taker/configs
 Restart=always
 User=bot
 Group=bot
