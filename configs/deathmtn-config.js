@@ -1,5 +1,11 @@
 const rootPath = '/usr/share/nginx/html/smidgeo.com/notes/';
 //const rootPath = '/mnt/storage/smidgeo.com/notes/';
+const issoScript = `<script data-isso="//smidgeo.com/notes/deathmtn/comments/"
+  data-isso-avatar="false"
+  data-isso-vote="false"
+  data-isso-require-author="true"
+  data-isso-require-email="true"
+  src="//smidgeo.com/notes/deathmtn/comments/js/embed.min.js"></script>`;
 
 module.exports = {
   name: 'deathmtn',
@@ -9,9 +15,9 @@ module.exports = {
     rootPath: rootPath + '/deathmtn',
     maxEntriesPerPage: 25,
     fileAbstractionType: 'LocalGit',
-    headExtraHTML: `<link rel="webmention" href="https://webmention.io/smidgeo.com_notes_deathmtn_/webmention" />
-    <link rel="pingback" href="https://webmention.io/smidgeo.com_notes_deathmtn_/xmlrpc" />
-    `,
+    //headExtraHTML: `<script data-isso="//smidgeo.com/notes/deathmtn/comments/"
+    //src="//smidgeo.com/notes/deathmtn/comments/js/embed.min.js"></script>
+    //`,
     footerHTML: `<footer id="footer">
     <div>
       <a href="https://smidgeo.com/notes/deathmtn/search>Search this weblog</a>
@@ -50,6 +56,20 @@ module.exports = {
     rssFeedOpts: {
       feed_url: 'https://smidgeo.com/notes/deathmtn/rss/index.rss',
       site_url: 'https://smidgeo.com/notes/deathmtn/'
+    },
+    modSingleEntryPageFragmentFn({ innerFragment }) {
+      return `${innerFragment}
+${issoScript}
+
+<section id="isso-thread"></section>`;
+    },
+    modIndexPageFragmentFn({ cell, fragment }) {
+      const lastLiPos = fragment.lastIndexOf('</li>');
+      return (
+        fragment.slice(0, lastLiPos) +
+        `${issoScript}
+<a href="${cell.id}.html#isso-thread">Comments</a> </li>`
+      );
     }
   },
   secret: require('./secrets').deathmtn
