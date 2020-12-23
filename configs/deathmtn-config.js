@@ -15,12 +15,13 @@ module.exports = {
     rootPath: rootPath + '/deathmtn',
     maxEntriesPerPage: 25,
     fileAbstractionType: 'LocalGit',
+    indexOnlyExtraHTML: issoScript,
     //headExtraHTML: `<script data-isso="//smidgeo.com/notes/deathmtn/comments/"
     //src="//smidgeo.com/notes/deathmtn/comments/js/embed.min.js"></script>
     //`,
     footerHTML: `<footer id="footer">
     <div>
-      <a href="https://smidgeo.com/notes/deathmtn/search>Search this weblog</a>
+      <a href="https://smidgeo.com/notes/deathmtn/search">Search this weblog</a>
     </div>
     <div>
       <a href="https://smidgeo.com/notes/deathmtn/rss/index.rss">RSS feed</a>
@@ -37,18 +38,12 @@ module.exports = {
     </div>
     <div>
       Want to read more stuff?
-      <div>
-        Good reads on clean web pages:
-        <ul>
-        <li><a href="https://avoision.com/blog/">Avoision</a></li>
-        <li><a href="https://memex.naughtons.org">John Naughton's online diary</a></li>
-        </ul>
-      </div>
       <ul>
         <li><a href="https://smidgeo.com/bots/">My bots</a></li>
         <li><a href="https://tinyletter.com/jimkang">My newsletter about my projects and plans</a></li>
         <li><a href="https://jimkang.com">My personal web site, whatever that means</a></li>
       </ul>
+    </div>
     </footer>
     `,
     generateRSS: true,
@@ -67,8 +62,7 @@ ${issoScript}
       const lastLiPos = fragment.lastIndexOf('</li>');
       return (
         fragment.slice(0, lastLiPos) +
-        `${issoScript}
-<a href="${cell.id}.html#isso-thread">Comments</a> </li>`
+        ` <a href="${cell.id}.html#isso-thread">Comments</a> </li>`
       );
     }
   },
