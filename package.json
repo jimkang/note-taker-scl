@@ -19,6 +19,6 @@
     "eslint": "^6.8.0"
   },
   "dependencies": {
-    "@jimkang/note-taker": "^2.3.0"
+    "@jimkang/note-taker": "^2.3.1"
   }
 }
