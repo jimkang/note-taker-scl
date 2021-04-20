@@ -7,7 +7,7 @@ module.exports = {
     homeLink: 'https://andersonkang.com/lookit',
     rootPath,
     maxEntriesPerPage: 10,
-    fileAbstractionType: 'LocalGit'
+    fileAbstractionType: 'LocalFile'
   },
   secret: require('./secrets').lookit
 };
