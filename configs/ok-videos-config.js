@@ -14,9 +14,6 @@ module.exports = {
       <div>
         <a href="https://jimkang.com/ok-videos/rss/index.rss">RSS feed</a>
       </div>
-      <div>
-        <a href="mailto:jimkang@fastmail.com">jimkang@fastmail.com</a>
-      </div>
       </footer>
       `,
     generateRSS: true,
